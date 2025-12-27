@@ -28,18 +28,17 @@ canvas.create_image(100, 112, image=tomato_png)
 canvas.create_text(100, 130, text='00:00', fill='white', font=(FONT_NAME, 35, 'bold'))
 canvas.grid(column=1, row=1)
 
-label = Label(text="Timer", font=(FONT_NAME, 35, 'bold'), bg=YELLOW, highlightthickness=0,fg =RED)
-label.grid(column=1, row=0)
+label_timer = Label(text="Timer", font=(FONT_NAME, 35), bg=YELLOW, fg=GREEN)
+label_timer.grid(column=1, row=0)
 
-button = Button(text="Start", command=print('start'), bg=YELLOW, highlightthickness=0,fg =RED)
-button.grid(column=0, row=2)
+start_button = Button(text="Start", highlightbackground=YELLOW)
+start_button.grid(column=0, row=2)
 
-button = Button(text="Reset", command=print('start'), bg=YELLOW, highlightthickness=0,fg =RED)
-button.grid(column=2, row=2)
+reset_button = Button(text="Reset", highlightbackground=YELLOW)
+reset_button.grid(column=2, row=2)
 
-check_sign='✓'
-label = Label(text=check_sign, font=(FONT_NAME, 35, 'bold'), bg=YELLOW, highlightthickness=0,fg =GREEN)
+check_sign = '✓'
+label = Label(text=check_sign, font=(FONT_NAME, 35, 'bold'), bg=YELLOW, highlightthickness=0, fg=GREEN)
 label.grid(column=1, row=3)
-
 
 window.mainloop()
