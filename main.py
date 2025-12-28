@@ -11,8 +11,18 @@ WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 reps = 0
+timer = None
 
 # ---------------------------- TIMER RESET ------------------------------- #
+
+def reset_timer():
+    window.after_cancel(timer)
+
+    canvas.itemconfig(timer_text, text="00:00")
+    label_timer.config(text="Timer", font=(FONT_NAME, 35), bg=YELLOW, fg=GREEN)
+    label_check.config(text='')
+    global reps
+    reps = 0
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 
@@ -43,7 +53,8 @@ def count_down(count):
 
     canvas.itemconfig(timer_text, text=f'{count_min}:{count_sec}')
     if count > 0:
-        window.after(1000, count_down, count - 1)
+        global timer
+        timer = window.after(1000, count_down, count - 1)
     else:
         start_timer()
         marks = ''
@@ -60,6 +71,7 @@ window.config(padx=100, pady=50, bg=YELLOW)
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
 tomato_png = PhotoImage(file='tomato.png')
 canvas.create_image(100, 112, image=tomato_png)
+
 timer_text = canvas.create_text(100, 130, text='00:00', fill='white', font=(FONT_NAME, 35, 'bold'))
 canvas.grid(column=1, row=1)
 
@@ -69,7 +81,7 @@ label_timer.grid(column=1, row=0)
 start_button = Button(text="Start", command=start_timer, highlightbackground=YELLOW)
 start_button.grid(column=0, row=2)
 
-reset_button = Button(text="Reset", highlightbackground=YELLOW)
+reset_button = Button(text="Reset", command=reset_timer, highlightbackground=YELLOW)
 reset_button.grid(column=2, row=2)
 
 label_check = Label(bg=YELLOW, highlightthickness=0, fg=GREEN)
