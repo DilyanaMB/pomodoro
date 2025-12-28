@@ -35,7 +35,6 @@ def start_timer():
         label_timer.config(text="Work", fg=GREEN)
 
 
-
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 
 def count_down(count):
@@ -49,6 +48,7 @@ def count_down(count):
         window.after(1000, count_down, count - 1)
     else:
         start_timer()
+        reps
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -72,7 +72,7 @@ reset_button = Button(text="Reset", highlightbackground=YELLOW)
 reset_button.grid(column=2, row=2)
 
 check_sign = '✓'
-label = Label(text=check_sign, font=(FONT_NAME, 35, 'bold'), bg=YELLOW, highlightthickness=0, fg=GREEN)
-label.grid(column=1, row=3)
+label_check = Label(font=(FONT_NAME, 35, 'bold'), bg=YELLOW, highlightthickness=0, fg=GREEN)
+label_check.grid(column=1, row=3)
 
 window.mainloop()
