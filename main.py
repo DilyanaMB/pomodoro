@@ -13,6 +13,7 @@ LONG_BREAK_MIN = 20
 reps = 0
 timer = None
 
+
 # ---------------------------- TIMER RESET ------------------------------- #
 
 def reset_timer():
@@ -23,6 +24,7 @@ def reset_timer():
     label_check.config(text='')
     global reps
     reps = 0
+
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 
@@ -43,6 +45,7 @@ def start_timer():
         count_down(work_sec)
         label_timer.config(text="Work", fg=GREEN)
 
+
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 
 def count_down(count):
@@ -61,6 +64,7 @@ def count_down(count):
         for _ in range(math.floor(reps / 2)):
             marks += '✓'
         label_check.config(text=marks, fg=GREEN)
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 
