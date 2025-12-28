@@ -48,7 +48,10 @@ def count_down(count):
         window.after(1000, count_down, count - 1)
     else:
         start_timer()
-        reps
+        if reps % 2 == 0:
+            check_signs = empty_sign + '✓'
+            label_check.config(text=check_signs, fg=GREEN)
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -71,8 +74,8 @@ start_button.grid(column=0, row=2)
 reset_button = Button(text="Reset", highlightbackground=YELLOW)
 reset_button.grid(column=2, row=2)
 
-check_sign = '✓'
-label_check = Label(font=(FONT_NAME, 35, 'bold'), bg=YELLOW, highlightthickness=0, fg=GREEN)
+empty_sign = ''
+label_check = Label(text=empty_sign, font=(FONT_NAME, 35, 'bold'), bg=YELLOW, highlightthickness=0, fg=GREEN)
 label_check.grid(column=1, row=3)
 
 window.mainloop()
