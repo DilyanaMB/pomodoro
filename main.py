@@ -12,7 +12,6 @@ SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 reps = 0
 
-
 # ---------------------------- TIMER RESET ------------------------------- #
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
@@ -34,7 +33,6 @@ def start_timer():
         count_down(work_sec)
         label_timer.config(text="Work", fg=GREEN)
 
-
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 
 def count_down(count):
@@ -48,7 +46,10 @@ def count_down(count):
         window.after(1000, count_down, count - 1)
     else:
         start_timer()
-        reps
+        marks = ''
+        for _ in range(math.floor(reps / 2)):
+            marks += '✓'
+        label_check.config(text=marks, fg=GREEN)
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -71,8 +72,7 @@ start_button.grid(column=0, row=2)
 reset_button = Button(text="Reset", highlightbackground=YELLOW)
 reset_button.grid(column=2, row=2)
 
-check_sign = '✓'
-label_check = Label(font=(FONT_NAME, 35, 'bold'), bg=YELLOW, highlightthickness=0, fg=GREEN)
+label_check = Label(bg=YELLOW, highlightthickness=0, fg=GREEN)
 label_check.grid(column=1, row=3)
 
 window.mainloop()
